@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>RegistrationPage</title>
+    <script>
+        function myRegistrationPage(){
+            text.style.fontSize = "12pt";
+   	        text.style.fontFamily = "Time New Roman";
+   	        text.style.color = "Blue";
+            var elements = document.getElementById("RegistrationForm").elements;
+            var elementArry1 = Array.from(element);
+            var submission = {};
+            elemsArray.forEach(element => console.log(element.name + " " + element.value));
+            elemsArray.forEach(element => console.log(element.email + " " + element.value));
+
+            do {
+                elemsArray.forEach(element => console.log(element.password + " " + element.value));
+            }while(element.value != '!' && element.value != '?');
+            elemsArray.forEach(element => console.log(element.DateOfBirth + " " + element.value));
+        }  
+    </script>
+    <link rel="stylesheet" href="./css/styles.css"type="text/css"/>
+</head>
+<body>
+    <form id ="RegistrationForm">
+        User's First Name: <input type ="text" name ="fname" value ="Savion"><br>
+        User's Last Name: <input type ="text" name ="lname" value ="Myers"><br>
+        Email: <input type ="text" email ="EmailAddr" value = "Savion.Myers@cix.csi.cuny.edu"><br>
+        Password: <input type ="text" password ="Password" value = "**********"><br>
+        DateOfBirth: <input type ="date" id="start" DateOfBirth="DOB" value="11/10/1999" min="01/01/1900" max="12/31/2023"><br>
+    </form>
+    <button onClick ="myRegistrationPage()">Enter</button>
+    <p id='message'>Congratulations, you are register in my Registration System.</p>
+    <a href="Lab5RegistrationPage.html" id="contBtn">Refresh</a>
+    <hr>
+    <p>Name: Savion Myers Last Date Updated: 3/14/2024</p>
+</body>
+</html>
