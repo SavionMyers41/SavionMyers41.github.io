@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Savion's Rest API</title>
+        <script>
+            const url = 'https://brianobruno.github.io/cats.json';
+            const options = 
+            {
+                method: 'GET',
+            };
+            const response = await fetch(url, options);
+            const result = await response.text();
+            const myObj = JSON.parse(result);
+
+            const items = [
+                { Factid: "Savion", value: 1 },
+                { Factid: "Blue", value: 5 },
+                { Factid: "Red", value: 3 },
+                { Factid: "Green", value: 4 },
+                { Factid: "GameDev", value: 2 },
+            ];
+
+            items.sort((a, b) => a.value - b.value);
+
+            const image = 'https://gamerant.com/tag/call-of-duty-warzone/';
+
+            function myDisplayer(myObj) {
+                document.getElementById("demo").innerHTML = myObj;
+                document.getElementById("demo").innerHTML = JSON.stringify(myObj);
+            }
+            
+            let myPromise = new Promise(function(myResolve, myReject) {
+                if(result == value){
+                    myResolve("Good to go!");
+                }else{
+                    myReject("Something's Wrong!");
+                }
+            });
+            
+            myPromise.then(
+                function(value) {myDisplayer(value);},
+                function(error) {myDisplayer(error);}
+            );
+
+            url = 'https://brianobruno.github.io/cats.json';
+            options = {
+                method: 'POST',
+                body : JSON.stringify(someObject)
+            };
+            response = await fetch(url, options);
+
+        </script>
+    </head>
+    <body>
+        <hr>
+        <p>Name: Savion Myers Last Date Updated: 3/21/2024</p>
+    </body>
+</html>
