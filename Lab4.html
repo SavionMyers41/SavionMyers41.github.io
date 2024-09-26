@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            var name,
+            ItemRequested,
+            NumOfItems;
+
+            document.write("<h1>Welcome to my store!</h1>");
+            
+            name = window.prompt("Please enter your name","Savion");
+            ItemRequested = window.prompt("Please enter your requested item"," ");
+            NumOfItems = window.prompt("Please enter the number of " + ItemRequested," ");
+
+            if(NumOfItems < 0 || NumOfItems < 100 || NumOfItems != NaN){
+                document.write("<h1>There was an error when you were ordering. Goodbye!!")
+            }else{
+                document.write("<h1>You have ordered " + NumOfItems, " " + ItemRequested, "s.")
+                now = new Date();
+                document.writeln("<h2>Your order will be delivered " + now.setDate(now.getDate + 7)," days from now.</h2>")
+                document.writeln("<h2>Thank You for Ordering " + name, ". </h2>")
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <p>Click Refresh or (Reload) the Page!!</p>
+    </body>
+</html>
