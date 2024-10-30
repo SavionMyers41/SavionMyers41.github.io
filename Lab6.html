@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <title>Rest API Of Cats</title>
+        <img src = "MyCat.jpg" id = "myCatImageId" />
+        <script>
+            async function Cats(){
+                const url = 'https://brianobruno.github.io/cats.json';
+                const option = {
+                    method: 'GET',
+                    "facts": [
+                    {
+                        "text": "Owning a cat can reduce the risk of stroke and heart attack by a third.",
+                        "factId": 1
+                    },
+                    {
+                        "text": "Most cats are lactose intolerant, and milk can cause painful stomach cramps and diarrhea. It's best to forego the milk and just give your cat the standard: clean, cool drinking water.",
+                        "factId": 4
+                    },
+                    {
+                        "text": "Domestic cats spend about 70 percent of the day sleeping and 15 percent of the day grooming.",
+                        "factId": 2
+                    },
+                    {
+                        "text": "The frequency of a domestic cat's purr is the same at which muscles and bones repair themselves.",
+                        "factId": 5
+                    },
+                    {
+                        "text": "Cats are the most popular pet in the United States: There are 88 million pet cats and 74 million dogs.",
+                        "factId": 3
+                    }
+                    ],
+                        "catPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/1200px-Cat_August_2010-4.jpg"
+                };
+                const response = await fetch(url, option);
+                const result = await response.json();
+
+                result.facts.sort((a,b) => a.factId - b.factId);
+                document.getElementById("myCatImageId").innerHTML.src = result.catPhoto;
+
+                result.facts.forEach((facts) => console.log(result.facts[0]));
+
+                url = 'https://brianobruno.github.io/cats.json';
+                options = 
+                {
+                    method: 'POST',
+	                body :  JSON.stringify(result)             
+                };
+                response = await fetch(url, option);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="Cats()">Get API</button>
+        <p>Click Refresh Or Reload the Page!</p>
+    </body>
+</html>
