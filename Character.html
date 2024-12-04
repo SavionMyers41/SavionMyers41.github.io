@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CharactersFromRickAndMorty</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <div class ="bg-image" style ="background-image: url('https://images.hdqwalls.com/wallpapers/rick-and-morty-smith-adventures-4k-di.jpg'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
+    
+        <script>
+            async function RickAndMortyCharacterAPI(){
+                const searchTerm = document.getElementById('searchTerm').value;
+                const url = `https://rickandmortyapi.com/api/character/?name=${searchTerm}`;
+                const option = {
+                    method: 'GET'
+                };
+
+                const response = await fetch(url, option);
+                const result = await response.json();
+
+                console.log(result);
+                displayResult(result);
+            }
+
+            function displayResult(result) {
+                const resultContainer = document.getElementById('resultContainer');
+        
+                if (result && result.results && result.results.length > 0) {
+                    // If characters are found, display their names
+                    const characterNames = result.results.map(character => character.name).join(', ');
+                    resultContainer.innerHTML = '';
+
+                    result.results.forEach(character => {
+                        const characterInfo = `
+                        <div>
+                            <img src="${character.image}" alt="${character.name}" width="100">
+                            <p><strong>${character.name}</strong> - ${character.species}</p>
+                            <p>Status: ${character.status}</p>
+                        </div>
+                        `;
+                        resultContainer.innerHTML += characterInfo;
+                    });
+                } else {
+                    resultContainer.innerHTML = 'No characters found with that name.';
+                }
+            }
+        </script>
+        <center>
+            <h3 style = "color:rgb(0, 255, 26);">Rick And Morty Information</h3>
+        </center>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style = "background-color:rgb(0, 255, 26);">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Characters</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="FinalProject.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Episode.html">Episodes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <center>
+            <div class="search-container">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" id="searchTerm" placeholder="Search for RickAndMorty Characters" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick = "RickAndMortyCharacterAPI()" type="submit">Search</button>
+                </form>
+            </div>
+            <div id = "resultContainer"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <ol class="list-group">
+                            <img src="RickFromRickAndMorty.jpg" width="100"  height="100" class = "rounded"/>
+                            <a href="https://rickandmorty.fandom.com/wiki/Rick_Sanchez" style = "background-color:rgb(25, 0, 251);">Rick Sanchez</a>
+                            <br>
+                            <img src="MortyFromRickAndMorty.jpg" width="100"  height="100" class = "rounded"/>
+                            <a href="https://rickandmorty.fandom.com/wiki/Morty_Smith" style = "background-color:rgb(25, 0, 255);">Morty Smith</a>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>
